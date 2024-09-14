@@ -63,17 +63,15 @@ const flipCardInner = document.querySelector('.flip-card-inner');
 const ownerPhoto = document.querySelector('.owner-photo');
 const flipCard = document.querySelector('.flip-card');
 
-// Inicializa o estado do card para a frente
-flipCardInner.style.transform = 'rotateY(0deg)';
-
 // Função para virar o card para trás quando clicado no container
 flipCard.addEventListener('click', function() {
-    if (flipCardInner.style.transform === 'rotateY(0deg)') {
-        flipCardInner.style.transform = 'rotateY(180deg)';
+    // Verifica se o card está na frente
+    if (flipCardInner.style.transform === 'rotateY(0deg)' || !flipCardInner.style.transform) {
+        flipCardInner.style.transform = 'rotateY(0deg)';
     }
 });
 
-// Função para mostrar/ocultar informações do dono e virar o card
+// Função para mostrar/ocultar informações do dono e girar o card
 toggleInfoBtn.addEventListener('click', function() {
     if (ownerDetails.classList.contains('hidden')) {
         ownerDetails.classList.remove('hidden');
@@ -91,7 +89,6 @@ toggleInfoBtn.addEventListener('click', function() {
         flipCardInner.style.transform = 'rotateY(0deg)';
     }
 });
-
 
     </script>
 </body>
