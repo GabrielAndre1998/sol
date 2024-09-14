@@ -14,7 +14,6 @@
                 <!-- Frente do card -->
                 <div class="flip-card-front">
                     <div class="pet-profile">
-                        
                         <div class="profile-header">
                             <img src="Screenshot_20240910-230248_Instagram.jpg" alt="Foto do Cachorro" class="pet-photo">
                             <div class="about-pet">
@@ -55,9 +54,10 @@
     </div>
 
     <script>
-        // Lógica para mostrar/ocultar informações
+        // Lógica para mostrar/ocultar informações e virar o card
         const toggleInfoBtn = document.getElementById('toggleInfoBtn');
         const ownerDetails = document.getElementById('ownerDetails');
+        const flipCardInner = document.querySelector('.flip-card-inner');
 
         toggleInfoBtn.addEventListener('click', function() {
             if (ownerDetails.classList.contains('hidden')) {
@@ -66,6 +66,9 @@
             } else {
                 ownerDetails.classList.add('hidden');
                 toggleInfoBtn.textContent = 'Mostrar informações do dono';
+                
+                // Faz o card virar de volta para a frente
+                flipCardInner.style.transform = 'rotateY(0deg)';
             }
         });
     </script>
