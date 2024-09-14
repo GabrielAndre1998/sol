@@ -45,6 +45,19 @@ body::before {
     max-width: 450px;  /* Limita a largura máxima */
     padding: 15px;
 }
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg); /* Estado inicial */
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
 
 /* Estilos do flip card */
 .flip-card {
@@ -113,6 +126,25 @@ body::before {
     margin-top: 60px; /* Adiciona espaço para a foto que está fora do card */
    
 }
+
+/* Foto do dono no verso do card, que começa oculta */
+.hidden {
+    display: none;
+}
+
+.owner-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    top: -50px; /* Move a imagem para fora pela metade da altura */
+    left: calc(50% - 50px); /* Centraliza a imagem horizontalmente */
+    border: 4px solid white; /* Adiciona uma borda branca */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra */
+    z-index: 2; /* Garante que a foto esteja sobre o card */
+}
+
 
 /* Estilos para esconder/mostrar as informações */
 .hidden {
