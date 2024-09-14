@@ -38,13 +38,15 @@
                 <!-- Verso do card -->
                 <div class="flip-card-back">
                     <div class="owner-info">
+                        <img src="20240914_161951.jpg" alt="Foto do Dono" class="owner-photo hidden"> <!-- Foto do Dono -->
+
                         <h3>Dono do Pet</h3>
                         <button id="toggleInfoBtn">Mostrar informações do dono</button>
                         <ul id="ownerDetails" class="hidden">
                             <li><i class="fa-solid fa-user" style="color: #74C0FC;"></i><strong></strong> Gabriel André Rodrigues</li>
                             <li><strong><i class="fa-solid fa-envelope" style="color: #e39191;"></i></strong> gabrielandreerodrigues@gmail.com</li>
                             <li><strong><i class="fa-brands fa-whatsapp" style="color: #63E6BE;"></i></strong> (31) 985080955</li>
-                            <li> <li><i class="fa-brands fa-instagram" style="color: #74C0FC;"></i></i> gabrielhjs</li></i>
+                            <li><i class="fa-brands fa-instagram" style="color: #74C0FC;"></i> gabrielhjs</li>
                             <li><i class="fa-solid fa-location-dot" style="color: #B197FC;"></i> Minas Gerais/Conselheiro Lafaiete</li>
                         </ul>
                     </div>
@@ -54,23 +56,43 @@
     </div>
 
     <script>
-        // Lógica para mostrar/ocultar informações e virar o card
-        const toggleInfoBtn = document.getElementById('toggleInfoBtn');
-        const ownerDetails = document.getElementById('ownerDetails');
-        const flipCardInner = document.querySelector('.flip-card-inner');
+       // Lógica para mostrar/ocultar informações e virar o card
+const toggleInfoBtn = document.getElementById('toggleInfoBtn');
+const ownerDetails = document.getElementById('ownerDetails');
+const flipCardInner = document.querySelector('.flip-card-inner');
+const ownerPhoto = document.querySelector('.owner-photo');
+const flipCard = document.querySelector('.flip-card');
 
-        toggleInfoBtn.addEventListener('click', function() {
-            if (ownerDetails.classList.contains('hidden')) {
-                ownerDetails.classList.remove('hidden');
-                toggleInfoBtn.textContent = 'Esconder informações do dono';
-            } else {
-                ownerDetails.classList.add('hidden');
-                toggleInfoBtn.textContent = 'Mostrar informações do dono';
-                
-                // Faz o card virar de volta para a frentes
-                flipCardInner.style.transform = 'rotateY(0deg)';
-            }
-        });
+// Inicializa o estado do card para a frente
+flipCardInner.style.transform = 'rotateY(0deg)';
+
+// Função para virar o card para trás quando clicado no container
+flipCard.addEventListener('click', function() {
+    if (flipCardInner.style.transform === 'rotateY(0deg)') {
+        flipCardInner.style.transform = 'rotateY(180deg)';
+    }
+});
+
+// Função para mostrar/ocultar informações do dono e virar o card
+toggleInfoBtn.addEventListener('click', function() {
+    if (ownerDetails.classList.contains('hidden')) {
+        ownerDetails.classList.remove('hidden');
+        ownerPhoto.classList.remove('hidden');  // Mostrar a foto do dono
+        toggleInfoBtn.textContent = 'Esconder informações do dono';
+
+        // Virar o card para trás ao mostrar as informações do dono
+        flipCardInner.style.transform = 'rotateY(180deg)';
+    } else {
+        ownerDetails.classList.add('hidden');
+        ownerPhoto.classList.add('hidden');  // Esconder a foto do dono
+        toggleInfoBtn.textContent = 'Mostrar informações do dono';
+
+        // Virar o card de volta para a frente
+        flipCardInner.style.transform = 'rotateY(0deg)';
+    }
+});
+
+
     </script>
 </body>
 </html>
